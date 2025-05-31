@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S & K Boutique - Unisex Fashion</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --dark-gold: #B78D40;
+            --black: #222222;
+            --white: #FFFFFF;
+            --light-gray: #F5F5F5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--white);
+            color: var(--black);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            background-color: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--black);
+            font-weight: bold;
+        }
+        
+        .address {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            display: none;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        nav ul li a:hover {
+            color: var(--gold);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            margin-top: 60px;
+            position: relative;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1.5s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--gold);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            animation-delay: 0.3s;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--black);
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid var(--gold);
+            animation-delay: 0.6s;
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: var(--gold);
+        }
+        
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background-color: var(--white);
+            text-align: center;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: var(--black);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--gold);
+        }
+        
+        .about p {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .highlight {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--dark-gold);
+            font-style: italic;
+            margin: 30px 0;
+            display: block;
+        }
+        
+        /* Products Section */
+        .products {
+            padding: 80px 0;
+            background-color: var(--light-gray);
+        }
+        
+        .category-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin: 40px 0 20px;
+            color: var(--black);
+            padding-left: 10px;
+        }
+        
+        .products-container {
+            overflow-x: auto;
+            padding: 20px 0;
+            scrollbar-width: thin;
+            scrollbar-color: var(--gold) var(--light-gray);
+        }
+        
+        .products-container::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .products-container::-webkit-scrollbar-track {
+            background: var(--light-gray);
+        }
+        
+        .products-container::-webkit-scrollbar-thumb {
+            background-color: var(--gold);
+            border-radius: 20px;
+        }
+        
+        .products-scroll {
+            display: flex;
+            gap: 20px;
+            padding-bottom: 20px;
+            width: max-content;
+        }
+        
+        .product-card {
+            background-color: var(--white);
+            min-width: 280px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .product-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .product-info p {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .price {
+            font-weight: 700;
+            color: var(--black);
+            font-size: 1.2rem;
+        }
+        
+        /* Reviews Section */
+        .reviews {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+        
+        .reviews-container {
+            overflow-x: auto;
+            padding: 20px 0;
+            scrollbar-width: thin;
+            scrollbar-color: var(--gold) var(--white);
+        }
+        
+        .reviews-container::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .reviews-container::-webkit-scrollbar-track {
+            background: var(--white);
+        }
+        
+        .reviews-container::-webkit-scrollbar-thumb {
+            background-color: var(--gold);
+            border-radius: 20px;
+        }
+        
+        .reviews-scroll {
+            display: flex;
+            gap: 20px;
+            padding-bottom: 20px;
+            width: max-content;
+        }
+        
+        .review-card {
+            background-color: var(--light-gray);
+            width: 300px;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            flex-shrink: 0;
+            scroll-snap-align: start;
+        }
+        
+        .review-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .review-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+        
+        .review-name {
+            font-weight: 600;
+        }
+        
+        .review-stars {
+            color: var(--gold);
+            margin-top: 5px;
+        }
+        
+        .review-text {
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background-color: var(--light-gray);
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .contact-info {
+            text-align: left;
+        }
+        
+        .contact-item {
+            margin-bottom: 25px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        
+        .contact-item i {
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-top: 3px;
+            min-width: 25px;
+        }
+        
+        .contact-item strong {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--black);
+        }
+        
+        .contact-item p {
+            margin: 0;
+            line-height: 1.6;
+        }
+        
+        .shop-image-container {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .shop-image {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            border-radius: 10px;
+            object-fit: cover;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .image-subtitle {
+            font-size: 1.1rem;
+            color: var(--dark-gold);
+            margin-top: 10px;
+            font-style: italic;
+        }
+        
+        .map-container {
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .contact-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        
+        .whatsapp-btn, .call-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .whatsapp-btn {
+            background-color: #25D366;
+            color: white;
+        }
+        
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+        }
+        
+        .call-btn {
+            background-color: var(--gold);
+            color: var(--black);
+        }
+        
+        .call-btn:hover {
+            background-color: var(--dark-gold);
+            transform: translateY(-3px);
+        }
+        
+        .contact-buttons i {
+            margin-right: 8px;
+            font-size: 1.1rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .map-container, .shop-image {
+                height: 350px;
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .contact {
+                padding: 60px 0;
+            }
+            
+            .contact-item {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .contact-item i {
+                margin-bottom: 5px;
+            }
+            
+            .contact-buttons {
+                flex-direction: column;
+            }
+            
+            .whatsapp-btn, .call-btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .map-container, .shop-image {
+                height: 250px;
+            }
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .social-links {
+            margin: 20px 0;
+        }
+        
+        .social-links a {
+            color: var(--white);
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--gold);
+        }
+        
+        .copyright {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .shop-image {
+                height: 300px;
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .logo-img {
+                width: 30px;
+                height: 30px;
+                font-size: 0.8rem;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 60px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 60px);
+                background-color: var(--black);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.5s;
+            }
+            
+            nav ul.active {
+                left: 0;
+            }
+            
+            nav ul li {
+                margin: 15px 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            body {
+                zoom: 0.95;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class=""></div>
+                S & K BOUTIQUE
+            </div>
+            <div class="address">No. 1A Kastina Road, Besides Jaaiz Stores</div>
+            
+            <nav>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero" id="home">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Elegance Redefined</h1>
+            <p>Come and check out our fine collection of fashion and accessories for both men and women.</p>
+            <a href="#products" class="btn">Explore Collections</a>
+        </div>
+    </section>
+    
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">About S & K Boutique</h2>
+            <p>Welcome to S & K Boutique – your go-to place for top-quality fashion and accessories for everyone.</p>
+            <span class="highlight">We sell unisex clothes, perfumes, jewelry, shoes, soaps, and more – all at good prices.</span>
+            <p>This is not just a boutique, it's a lifestyle. You'll find everything you need to look good and feel confident.</p>
+        </div>
+    </section>
+    
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title">Our Collections</h2>
+            
+            <h3 class="category-title">Clothing</h3>
+            <div class="products-container">
+                <div class="products-scroll">
+                    <div class="product-card">
+                        <div class="product-img" style="background-image: url('https://assets.onecompiler.app/42v9nh5a9/43k242959/IMG-20250527-WA0080.jpg');"></div>
+                        <div class="product-info">
+                            <h3>Elegant Teal Two-Piece Set</h3>
+                            <p>Perfect for stylish events</p>
+                            <div class="price">₦28,000</div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-img" style="background-image: url('https://assets.onecompiler.app/42v9nh5a9/43k242959/IMG-20250527-WA0082.jpg');"></div>
+                        <div class="product-info">
+                            <h3>Crop-Top & Skirt</h3>
+                            <p>Perfect for causual outings</p>
+                            <div class="price">₦13,500</div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-img" style="background-image: url('https://assets.onecompiler.app/42v9nh5a9/43k242959/IMG-20250527-WA0078.jpg');"></div>
+                        <div class="product-info">
+                            <h3>Blue & Black Apple Logo Tracksuit</h3>
+                            <p>Ideal for causual days and comfy hangouts</p>
+                            <div class="price">₦15,000</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 class="category-title">Shoes & Bags</h3>
+            <div class="products-container">
+                <div class="products-scroll">
+                    <div class="product-card">
+                        <div class="product-img" style="background-image: url('https://assets.onecompiler.app/42v9nh5a9/43k25nzfm/IMG-20250527-WA0076.jpg');"></div>
+                        <div class="product-info">
+                            <h3>Glossy Cross-Step Sandals</h3>
+                            <p>Stylish and comfy shoes</p>
+                            <div class="price">₦9,000</div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-img" style="background-image: url('https://assets.onecompiler.app/42v9nh5a9/43k25nzfm/IMG-20250527-WA0086.jpg');"></div>
+                        <div class="product-info">
+                            <h3>Leather Bags</h3>
+                            <p>Strong and classy handbags</p>
+                            <div class="price">₦18,000</div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-img" style="background-image: url('https://assets.onecompiler.app/42v9nh5a9/43k25nzfm/download.webp');"></div>
+                        <div class="product-info">
+                            <h3>Casual Sneakers</h3>
+                            <p>Fine sneakers for everyday</p>
+                            <div class="price">₦12,000</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 class="category-title">Accessories</h3>
+            <div class="products-container">
+                <div class="products-scroll">
+                    <div class="product-card">
+                        <div class="product-img" style="background-image: url('https://assets.onecompiler.app/42v9nh5a9/43k25nzfm/IMG-20250527-WA0073.jpg');"></div>
+                        <div class="product-info">
+                            <h3>Jewelry Sets</h3>
+                            <p>Add shine to your outfit</p>
+                            <div class="price">₦18,000</div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-img" style="background-image: url('https://assets.onecompiler.app/42v9nh5a9/43k26rp96/download%20(1).webp');"></div>
+                        <div class="product-info">
+                            <h3>Luxury Perfumes</h3>
+                            <p>Smell good all day</p>
+                            <div class="price">₦25,000</div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-img" style="background-image: url('https://assets.onecompiler.app/42v9nh5a9/43k279ajg/IMG-20250527-WA0074.jpg');"></div>
+                        <div class="product-info">
+                            <h3>Classy White Leather HandBag</h3>
+                            <p>Perfect for everyday use and special occasions</p>
+                            <div class="price">₦15,000</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="reviews" id="reviews">
+        <div class="container">
+            <h2 class="section-title">Customer Reviews</h2>
+            <div class="reviews-container">
+                <div class="reviews-scroll">
+                    <div class="review-card">
+                        <div class="review-header">
+                            <img src="https://assets.onecompiler.app/42v9nh5a9/43k27m2v3/555a0547-684b-45da-ba9c-09ed236e5733.jpeg" alt="Customer" class="review-img">
+                            <div>
+                                <div class="review-name">Amina K.</div>
+                                <div class="review-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-text">"The quality of their clothes is unmatched! I've gotten so many compliments since I started shopping here."</p>
+                    </div>
+                    
+                    <div class="review-card">
+                        <div class="review-header">
+                            <img src="https://assets.onecompiler.app/42v9nh5a9/43k27t747/Screenshot_20250528-000929.png" alt="Customer" class="review-img">
+                            <div>
+                                <div class="review-name">Tunde O.</div>
+                                <div class="review-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-text">"Their leather bags are worth every penny. I've been using mine daily for 6 months and it still looks brand new. Highly recommended!"</p>
+                    </div>
+                    
+                    <div class="review-card">
+                        <div class="review-header">
+                            <img src="https://assets.onecompiler.app/42v9nh5a9/43jmsbya7/Screenshot_20250523-211839.png" alt="Customer" class="review-img">
+                            <div>
+                                <div class="review-name">Chioma M.</div>
+                                <div class="review-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-text">"The perfumes last all day and the scents are unique. My new favorite boutique! I always find something special here."</p>
+                    </div>
+                    
+                    <div class="review-card">
+                        <div class="review-header">
+                            <img src="https://assets.onecompiler.app/42v9nh5a9/43jmsewk8/Screenshot_20250523-211953.png" alt="Customer" class="review-img">
+                            <div>
+                                <div class="review-name">Emeka N.</div>
+                                <div class="review-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-text">"The jewelry selection is exquisite and affordable. I bought a set for my wife and she hasn't stopped wearing it!"</p>
+                    </div>
+                    
+                    <div class="review-card">
+                        <div class="review-header">
+                            <img src="https://assets.onecompiler.app/42v9nh5a9/43jmsbya7/Screenshot_20250523-211817.png" alt="Customer" class="review-img">
+                            <div>
+                                <div class="review-name">Bisi A.</div>
+                                <div class="review-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-text">"The traditional attire collection is beautiful. I got a custom outfit for a wedding and received so many compliments!"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="shop-image-container">
+                <img src="https://assets.onecompiler.app/43kany7sx/43kapqq7z/IMG-20250528-WA0029.jpg" alt="S & K Boutique Storefront" class="shop-image">
+                <p class="image-subtitle">Visit our stylish boutique in Kano</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Address:</strong>
+                            <p>No. 1A Kastina Road, Besides Jaaiz Stores By Gidan Baban Gwarri Roundabout, Kano, Nigeria.</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <strong>Phone:</strong>
+                            <p>+234 803 849 1880<br>+234 813 358 3059</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>Email:</strong>
+                            <p>info@skboutique.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Opening Hours:</strong>
+                            <p>Mon-Sat: 9AM - 8PM<br>Tue & Thur: 9AM - 4PM</p>
+                        </div>
+                    </div>
+                    <div class="contact-buttons">
+                        <a href="https://wa.me/2348038491880?text=Hello%20S%20%26%20K%20Boutique!%20I'm%20visiting%20from%20your%20website%20and%20would%20like%20to%20place%20an%20order." class="whatsapp-btn">
+                            <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                        </a>
+                        <a href="tel:+2348038491880" class="call-btn">
+                            <i class="fas fa-phone"></i> Call Us
+                        </a>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3902.371407693119!2d8.516314314757889!3d12.002663191447035!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDAwJzA5LjYiTiA4wrAzMScwOC4xIkU!5e0!3m2!1sen!2sng!4v1620000000000!5m2!1sen!2sng" 
+                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="logo" style="color: var(--gold); font-size: 2rem;">S & K BOUTIQUE</div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-pinterest"></i></a>
+            </div>
+            <div class="copyright">
+                © 2025 S & K Boutique. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('nav ul');
+        
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.innerHTML = navMenu.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close menu when clicking a link
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Hero background image slideshow
+        const hero = document.querySelector('.hero');
+        const images = [
+            'https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80',
+            'https://images.unsplash.com/photo-1469334031218-e382a71b716b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80',
+            'https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80',
+            'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80'
+        ];
+        
+        let currentImage = 0;
+        
+        function changeBackground() {
+            hero.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${images[currentImage]})`;
+            hero.style.transition = 'background-image 1.5s ease-in-out';
+            
+            currentImage = (currentImage + 1) % images.length;
+        }
+        
+        // Change background every 5 seconds
+        setInterval(changeBackground, 5000);
+        
+        // Initialize first background
+        changeBackground();
+    </script>
+</body>
+</html
